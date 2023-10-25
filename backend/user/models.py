@@ -55,7 +55,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         CompanyModel, on_delete=models.DO_NOTHING, null=True, blank=True
     )
     company_phone_number = models.CharField(
-        validators=[PHONE_REGEX], max_length=11, unique=True, null=True, blank=True
+        validators=[PHONE_REGEX], max_length=11, null=True, blank=True
     )
     position = models.CharField(max_length=255, null=True, blank=True)
 
