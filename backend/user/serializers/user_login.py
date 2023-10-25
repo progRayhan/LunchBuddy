@@ -11,5 +11,7 @@ class UserLoginSerializer(TokenObtainPairSerializer):
         token["user_type"] = user_info.user_type
         token["employee_id"] = user_info.employee_id
         token["company_phone_number"] = user_info.company_phone_number
+        token["is_active"] = user_info.is_active
+        token["is_staff"] = user_info.is_staff
 
         return token
