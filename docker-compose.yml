@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  db_lunch_buddy:
+    image: postgres:15
+    restart: always
+    container_name: db_lunch_buddy
+    env_file:
+      - ./.env/dev.env
+      - ./.env/base.env
+    ports:
+      - 5439:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - main
+
+  lunch_buddy_backend:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/dev/Dockerfile
+    container_name: lunch_buddy_backend
+    command: >
+      sh -c "cd /app/backend &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8023"
+    volumes:
+      - .:/app
+    ports:
+      - "8023:8023"
+    depends_on:
+      - db_lunch_buddy
+    env_file:
+      - ./.env/dev.env
+      - ./.env/base.env
+    networks:
+      - main
+
+networks:
+  main:
+
+volumes:
+  pgdata:
