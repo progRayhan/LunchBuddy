@@ -3,6 +3,8 @@ from pathlib import Path
 
 import dj_database_url
 
+from config.JWT_SETTINGS import JWT_SETTINGS
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -40,6 +42,20 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+
+SIMPLE_JWT = JWT_SETTINGS
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
