@@ -8,15 +8,18 @@ class CompanyAdmin(admin.ModelAdmin):
         "id",
         "company_id",
         "company_name",
+        "phone_number",
         "is_active",
     )
     list_display_links = (
         "company_id",
         "company_name",
+        "phone_number",
     )
     search_fields = (
         "company_id",
         "company_name",
+        "phone_number",
     )
     list_per_page = 25
 
