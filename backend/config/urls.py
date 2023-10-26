@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/v1/restaurant/", include("restaurant.urls")),
     path("api/v1/menu/", include("menu.urls")),
     path("api/v1/vote/", include("vote.urls")),
+    path("api/v1/winner-restaurant/", include("winner_restaurant.urls")),
 ]
