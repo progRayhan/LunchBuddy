@@ -47,6 +47,7 @@ LOCAL_APPS = [
     "restaurant",
     "menu",
     "vote",
+    "winner_restaurant",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
